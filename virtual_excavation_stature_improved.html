@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bone Files | Virtual Excavation — Field School</title>
+<style>
+:root{--ink:#eee5cf;--muted:#b2ad9a;--gold:#e8b960;--green:#90b59c;--panel:#1b2421;--line:#ffffff20}*{box-sizing:border-box}body{margin:0;background:#101916;color:var(--ink);font:15px/1.55 system-ui,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.38}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:4px}button{border:1px solid var(--line);border-radius:6px;padding:10px 14px;background:#ffffff07;color:var(--ink);transition:background .18s,transform .18s}button:hover:enabled{background:#ffffff16}button.primary{background:var(--gold);border-color:var(--gold);color:#292219;font-weight:750}button.primary:hover:enabled{background:#ffd68c}h1,h2,h3,p{margin:0 0 12px}h1,h2{font-family:Georgia,serif;font-weight:500;line-height:1.12}h1{font-size:clamp(34px,4vw,58px)}h2{font-size:30px}h3{font-size:16px}.eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700}.muted,small{color:var(--muted)}header{height:83px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:12px 30px}.brand{display:flex;gap:12px;align-items:center}.brandmark{border:1px solid var(--gold);color:var(--gold);padding:4px 10px;font:28px Georgia;transform:rotate(-5deg)}.brand strong{font:22px Georgia;letter-spacing:3px}.brand small{display:block;font-size:10px;letter-spacing:1.5px}.header-right{display:flex;gap:12px;align-items:center}.badge{border:1px solid #e8b96055;background:#e8b9600b;color:var(--gold);border-radius:99px;padding:6px 12px;font-size:11px;letter-spacing:1px}main{max-width:1500px;margin:auto;padding:25px 30px}.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}.intro p{margin:9px 0 0;color:var(--muted);max-width:650px;font-size:13px}.case-select{background:#202a24;color:var(--ink);border:1px solid var(--line);padding:10px;border-radius:5px}.steps{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:22px;border:1px solid var(--line);border-radius:7px;overflow:hidden}.step{padding:13px 16px;color:var(--muted);font-size:12px;border-right:1px solid var(--line);display:flex;gap:10px;align-items:center}.step:last-child{border:0}.step i{border:1px solid var(--line);border-radius:50%;width:23px;height:23px;text-align:center;font-size:11px;line-height:21px;font-style:normal}.step.active{background:#e8b96015;color:var(--gold)}.step.active i{border-color:var(--gold)}.step.done{color:var(--green)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px}.field{border-radius:9px;overflow:hidden;border:1px solid #8a79554d;position:relative;background:#5e503c}.fieldbar{position:absolute;z-index:2;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;pointer-events:none;font:10px monospace;color:#f6e6be;letter-spacing:1px}.fieldbar span{background:#181d19cc;padding:5px 9px;border-radius:3px}.field svg{display:block;width:100%;height:auto;aspect-ratio:900/690;user-select:none;touch-action:manipulation}.fieldfoot{display:flex;justify-content:space-between;gap:10px;padding:12px 16px;background:#20261f;font-size:11px;color:var(--muted)}.fieldfoot strong{color:var(--gold)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;min-height:260px}.panel p{font-size:13px;color:var(--muted)}.panel .eyebrow{margin-bottom:10px}.panel h2{font-size:28px}.progress{height:4px;background:#ffffff12;border-radius:5px;margin:15px 0}.progress div{height:100%;background:var(--gold);transition:width .3s}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.stat{font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.actions button{flex:1}.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0}.bonecard{padding:7px 3px;font-size:10px;text-align:center;min-width:0}.bonecard svg{height:48px;width:100%;display:block}.bonecard.selected{background:#e8b96022;border-color:var(--gold)}.bonecard.placed{background:#90b59c15;color:var(--green)}.note{padding:12px;border-left:2px solid var(--gold);background:#e8b96008;font-size:12px;color:#cdc6af;margin:14px 0}.feedback{border-top:1px solid var(--line);padding-top:12px;margin-top:16px;font-size:12px;color:var(--gold);min-height:50px}.bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:20px}.mini{border-top:1px solid var(--line);padding-top:13px;font-size:12px}.mini b{display:block;font:17px Georgia;margin:3px 0 5px}.mini p{font-size:11px;color:var(--muted)}.mini .eyebrow{font-size:9px}.choice{display:block;width:100%;text-align:left;margin:7px 0;font-size:13px}.choice.chosen{background:#e8b96022;border-color:var(--gold)}.choice.correct{border-color:var(--green)}.evidence{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.evidence>div{border:1px solid var(--line);padding:8px;border-radius:5px;font-size:11px}.evidence svg{width:100%;height:105px;display:block}.evidence b{color:var(--gold);font-size:10px}.field-group{margin:13px 0}.field-group label{display:block;font-size:12px;margin:5px 0}input[type=text],textarea{background:#111a16;color:var(--ink);border:1px solid #ffffff35;border-radius:5px;padding:10px;width:100%}textarea{resize:vertical;min-height:75px}.formula{padding:12px;background:#111a16;border-radius:5px;font:15px/1.7 Georgia;color:var(--gold)}.result{font:33px Georgia;color:var(--gold);margin:10px 0}.ghost{opacity:.19;stroke-dasharray:4 3}.slot{cursor:pointer}.slot:hover{opacity:.6}.slot.placed{opacity:1;stroke-dasharray:none;cursor:default}.digcell{cursor:crosshair}.digcell:hover .soil{fill:#a18a5a}.dug .soil{fill:#00000000;pointer-events:none}.findbone{opacity:0}.dug .findbone{opacity:1}.rulertext{font:11px monospace;fill:#3b3022}.modal{border:1px solid #a78b53;border-radius:10px;background:#1c2621;color:var(--ink);max-width:770px;width:94%;padding:26px;max-height:90vh;overflow:auto}.modal::backdrop{background:#000b}.modal p,.modal li{font-size:13px;color:var(--muted)}a{color:var(--gold)}.reportstats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.reportstats>div{padding:15px;border:1px solid var(--line)}.reportstats strong{display:block;font:24px Georgia;color:var(--gold)}.reportstats small{font-size:11px}footer{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:23px;padding-bottom:15px;color:var(--muted);font-size:10px}.footerlinks{display:flex;gap:8px}.footerlinks button{font-size:11px;padding:5px 9px}.compass{animation:none}@media(max-width:1050px){.layout{grid-template-columns:minmax(0,1fr) 310px}main{padding:20px}.panel{padding:16px}}@media(max-width:790px){header{padding:10px 16px;height:72px}.brand strong{font-size:18px}.badge{display:none}.intro{display:block}.case-wrap{margin-top:15px}.layout{grid-template-columns:1fr}.panel{min-height:0}.steps .step{padding:10px 6px;gap:5px;font-size:10px}.bottom{grid-template-columns:1fr}.bottom .mini{padding-top:10px}.field svg{min-height:330px}main{padding:18px 12px}.intro p{font-size:12px}.header-right button{font-size:11px}footer{align-items:flex-start;flex-direction:column}}@media print{body{background:#fff;color:#222}body>*:not(dialog){display:none!important}dialog#report{display:block!important;position:static;max-height:none;border:0;background:#fff;color:#222;max-width:none;width:100%}dialog#report::backdrop{display:none}.modal button{display:none}.modal p,.modal li,.modal small{color:#444}.reportstats strong,.result{color:#222}}
+
+/* The supplied Bone Files activity supplies the blue-and-gold notebook theme. */
+:root{--ink:#f2f6f8;--muted:#bacbd5;--gold:#e7b56b;--green:#93dcae;--panel:#122335;--line:#385069;--cyan:#72d9d2}
+body{background:radial-gradient(circle at 15% 5%,#213c50 0%,#0a1521 49%)}
+.panel,.notebook{background:linear-gradient(145deg,#162a3b,#0f2233)}.panel{border-radius:14px}.layout{grid-template-columns:minmax(0,1fr) 390px;align-items:start}.case-select{background:#192e42}.steps{grid-template-columns:repeat(5,1fr)}.step{font-size:12px;padding:12px}.step.active{background:#29404c;color:var(--cyan)}.step.active i{border-color:var(--cyan)}.field{border-radius:14px}.fieldfoot{background:#162a3b}.bonecard{background:#21394a;border-color:#4a6478;border-radius:9px}.bonecard.selected{border-color:var(--gold);background:#3a4750}.note{background:#22384b}.formula{background:#0b2030}.field-group input,.field-group textarea{background:#0c1b29}.intro h1{font-size:clamp(34px,3.6vw,53px)}.intro p{max-width:720px}.toolbar{background:#122335;border:1px solid var(--line);border-radius:11px;padding:16px;margin-top:14px}.toolrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.tool{flex:1;min-width:95px;display:flex;gap:7px;justify-content:center;align-items:center;font-size:12px;padding:10px 7px}.tool svg{width:28px;height:28px}.tool.active{border-color:var(--cyan);background:#72d9d215;color:#b5fffa}.tool-caption{font-size:12px;color:var(--muted);margin-top:9px;min-height:2em}.risk-toggle{font-size:11px;display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--muted)}.risk-toggle input{accent-color:var(--gold)}.notebook{border:1px solid var(--line);border-radius:11px;margin-top:14px;padding:16px}.logitems{font-size:11px;color:var(--muted);margin-top:8px;display:grid;gap:4px}.recordline{border-bottom:1px solid var(--line);padding:7px 0}.sortchoices{display:grid;gap:6px;margin-top:12px}.sortchoices button{text-align:left;font-size:12px}.specimen-preview{background:#0d1c27;border:1px solid var(--line);border-radius:8px;margin:12px 0}.specimen-preview svg{height:130px;width:100%;display:block}.sortselect{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:12px}.sortselect button{padding:5px;font-size:10px}.sortselect button.active{border-color:var(--gold)}.sortselect button.complete{color:var(--green)}.damaged{border-color:#ec947c!important}.repairbox{border:1px solid #ec947c66;border-radius:8px;background:#ec947c08;padding:12px;margin:12px 0}.repairbox p{font-size:12px}.repairbox svg{width:100%;height:110px}.repairbox input{width:100%;accent-color:var(--gold)}.measurement{width:100%;accent-color:var(--gold);margin:12px 0 0}.recoverylabel{font-size:10px;color:#ec947c}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:11px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:8px 6px}th{color:var(--gold)}.modal textarea{width:100%}.tag{font-size:10px;padding:3px 6px;border:1px solid var(--line);border-radius:5px}.story{border:1px dashed var(--gold);padding:12px;margin-top:15px;white-space:pre-wrap}.tool-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}.tool-heading .tag{color:var(--cyan)}.inline-label{font-weight:500;font-size:11px}.bottom .mini p{line-height:1.6}
+@media(min-width:1200px){.inventory{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:1050px){.layout{grid-template-columns:minmax(0,1fr) 350px}.step{font-size:11px;padding:10px 8px}}
+@media(max-width:790px){.layout{grid-template-columns:1fr}.steps{grid-template-columns:repeat(5,minmax(0,1fr))}.steps .step{font-size:9px;padding:9px 4px;gap:3px;flex-direction:column}.steps .step i{flex-shrink:0}.field svg{min-height:0}.inventory{grid-template-columns:repeat(4,1fr)}.tool{min-width:80px}.intro .case-wrap{display:flex;align-items:center;gap:10px}.case-wrap br{display:none}.brand small{font-size:8px;letter-spacing:1px}.header-right button{padding:7px}.brand{gap:8px}.notebook .row button{font-size:11px;padding:7px}.modal{padding:20px}.reportstats{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.inventory{grid-template-columns:repeat(3,1fr)}.toolrow{gap:5px}.tool{font-size:11px}.case-select{font-size:12px;max-width:235px}.intro .case-wrap{align-items:flex-start;flex-direction:column}}
+@media print{.modal p,.modal small{color:#364656}.reportstats{break-inside:avoid}h3{break-after:avoid}.story{color:#26303b;border-color:#999}}
+
+
+.magnifier-modal{max-width:720px}.magnifier-view{border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#0c1b29;margin:14px 0}.magnifier-view svg{display:block;width:100%;height:min(43vh,360px)}.zoom-controls{display:grid;gap:7px}.zoom-control{display:grid;grid-template-columns:105px 1fr 45px;gap:10px;align-items:center;font-size:12px}.zoom-control input{width:100%;accent-color:var(--cyan)}.zoom-control output{text-align:right;color:var(--cyan)}.sortchoices button[aria-pressed="true"]{border-color:var(--green);background:#93dcae12}.zoom-controls label{margin:0}.magnifier-help{font-size:11px!important}.magnifier-modal .actions{position:relative}
+@media(max-width:480px){.magnifier-view svg{height:34vh}.zoom-control{grid-template-columns:85px 1fr 40px;gap:6px}}
+
+
+#osteometer{touch-action:none;user-select:none;-webkit-user-select:none}
+#readingCursor{cursor:ew-resize;outline:none}
+#readingCursor:focus .tape-grip{stroke:#fff;stroke-width:3}
+#readingCursor[aria-disabled="true"]{cursor:default}
+.tape-reading{display:flex;justify-content:space-between;align-items:center;margin:10px 0;color:var(--cyan);font-size:13px}
+.tape-reading output{font:22px Georgia;color:var(--gold)}
+.feedback:empty{display:none}
+
+.mission-hud{display:grid;grid-template-columns:1fr auto;gap:9px 20px;background:#101f2b;border:1px solid var(--line);border-radius:10px;padding:13px 16px;margin:-7px 0 20px}.mission-hud .meterline{height:5px;background:#ffffff12;border-radius:10px;overflow:hidden}.mission-hud .meterline div{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));transition:width .4s}.mission-head{display:flex;justify-content:space-between;font-size:11px;margin-bottom:7px}.medals{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}.medal{font-size:10px;padding:4px 7px;border:1px solid var(--line);border-radius:20px;color:var(--muted)}.medal.earned{border-color:#e7b56b88;color:var(--gold);background:#e7b56b0d}.hud-xp{font:22px Georgia;color:var(--gold);align-self:center}.hud-xp small{display:block;font:10px system-ui;color:var(--cyan);text-align:right}.game-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#153b36;border:1px solid var(--green);border-radius:10px;box-shadow:0 8px 30px #0006;padding:12px 20px;z-index:20;max-width:90vw;color:#dcffe7;font-size:13px;pointer-events:none}.game-toast[hidden]{display:none}.scenario-check{border:1px solid var(--line);border-radius:8px;padding:13px;margin-top:12px;font-size:12px}.scenario-check.pass{border-color:var(--green);background:#93dcae08}.scenario-check.fail{border-color:#e7b56b66}.scenario-check h3{font-size:16px;color:var(--gold)}.scenario-check ul{list-style:none;margin:8px 0;padding:0}.scenario-check li{padding:3px 0;color:var(--muted)}.scenario-check li.met{color:var(--green)}.scenario-check small{font-size:10px}.rubric{margin:10px 0;font-size:11px;color:var(--muted)}.rubric summary{cursor:pointer;color:var(--gold)}.keyword-bank{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.keyword-bank span{font-size:10px;border:1px solid var(--line);border-radius:4px;padding:3px 6px}.mission-outcome{padding:15px;border:1px solid var(--gold);border-radius:8px;margin:14px 0}.mission-outcome strong{font:24px Georgia;color:var(--gold);display:block}.sparks{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}.spark{position:absolute;width:7px;height:12px;top:-20px;background:var(--gold);animation:fall 1.8s ease-in forwards}.spark:nth-child(2n){background:var(--cyan)}.spark:nth-child(3n){background:var(--green)}@keyframes fall{to{transform:translateY(100vh) rotate(520deg);opacity:0}}@media(prefers-reduced-motion:reduce){.spark{animation:none;display:none}.mission-hud .meterline div{transition:none}}@media(max-width:480px){.mission-hud{padding:11px;gap:8px}.medal{font-size:9px}.hud-xp{font-size:19px}}
+</style></head><body>
+<header><div class="brand"><div class="brandmark">⟡</div><div><strong>BONE FILES</strong><small>BIOARCHAEOLOGY CLUB / FIELD SCHOOL</small></div></div><div class="header-right"><span class="badge">FICTIONAL SITE · Ω–17</span><button id="helpBtn">Field guide ↗</button></div></header>
+<main><div class="intro"><div><div class="eyebrow">The lost expedition · Mission 01</div><h1>Every bone tells a story.</h1><p>Excavate carefully, separate a mixed assemblage, reunite 12 adult bone groups, and estimate biological sex and stature. Then write your own interpretation.</p></div><div class="case-wrap"><label class="eyebrow" for="caseSelect">Burial record</label><br><select id="caseSelect" class="case-select"><option value="a">Burial A · Individual Ω–17</option><option value="b">Burial B · Individual Ω–18</option></select></div></div>
+<nav class="steps" aria-label="Mission progress" id="steps"></nav><section class="mission-hud" id="missionHUD" aria-label="Mission status"></section>
+<div class="layout"><div class="field-column"><section class="field" aria-label="Excavation and skeleton assembly"><div class="fieldbar"><span id="fieldLabel">TRENCH 04 / BURIAL A</span><span id="fieldMode">EXCAVATION VIEW</span></div><svg id="scene" viewBox="0 0 900 690" aria-label="Interactive excavation field"></svg><div class="fieldfoot"><span id="fieldInstruction">Select a grid square to brush away its soil.</span><strong id="fieldCount">0 / 12 recovered</strong></div></section><section class="toolbar" id="tools" aria-label="Excavation tools"></section><section class="notebook" aria-label="Excavation journal"><div class="row"><div class="eyebrow">Excavation journal</div><button id="journalBtn">Full field record ↗</button></div><div id="journal" class="logitems"></div></section></div><aside><section class="panel" id="panel"></section></aside></div>
+<div class="bottom"><div class="mini"><span class="eyebrow">01 / Context</span><b>A person, not a treasure.</b><p>Record carefully and treat human remains respectfully. This mission uses fictional adults and schematic bones.</p></div><div class="mini"><span class="eyebrow">02 / Observation</span><b>Build an evidence trail.</b><p>Recover → sort → assemble → inspect the pelvis → measure a fixed femur → estimate stature.</p></div><div class="mini"><span class="eyebrow">03 / Interpretation</span><b>Keep uncertainty visible.</b><p>Separate observation from imagination. Sex estimation is probabilistic; stature equations are reference-specific. Creative scenarios are labelled separately.</p></div></div>
+<footer><span>THE LOST EXPEDITION · A classroom bioarchaeology simulation · All interface text in English</span><div class="footerlinks"><button id="sourcesBtn">Method & sources</button><button id="restartBtn">Restart mission</button></div></footer></main>
+<dialog class="modal" id="help"><div class="eyebrow">Expedition field guide</div><h2>Careful fieldwork, stronger evidence.</h2><ol><li><b>Excavate.</b> Select a tool below the trench. The trowel removes the upper sediment in one action. Once a find is visible, switch to the brush: two gentle strokes recover it. A trowel used directly on a fragile exposed find can cause a simulated break when the damage option is on.</li><li><b>Inspect and sort.</b> The magnifier opens an enlarged specimen view, with zoom and position controls. Make your own visual assessment and choose a tray at any time. The magnifier does not display an identification or an answer hint.</li><li><b>Reassemble.</b> Select an adult bone card, then its matching faded outline; dragging also works. A damaged adult group must first be refitted by aligning its two virtual fragments. The individual’s right is on the viewer’s left.</li><li><b>Assess biological sex.</b> Use both recorded pelvic observations for the adult. Juvenile, cat and non-skeletal finds remain in separate trays.</li><li><b>Measure.</b> Pull the tape’s blue handle from the zero mark to the fixed femur’s farthest endpoint. Drag with a mouse or finger. The bone and tape share the same centimetre scale. When the handle is focused, arrow keys adjust the tape by 0.1 cm.</li><li><b>Calculate and report.</b> Use the supplied adult equation. Enter a scientific conclusion and, optionally, an imaginative scenario. Complete the keyword-based scenario challenge. Save a text report or print to PDF.</li></ol><p>All human cases are fictional. Fracture, refitting and morphology are simplified classroom mechanics. Rejoining fragments here does not reproduce real conservation or validate measurements of damaged archaeological bones.</p><p>Use Tab to reach controls and Enter or Space to activate. No timer or lives. The mission stays in this open tab; save your report before closing or restarting.</p><button class="primary" onclick="document.getElementById('help').close()">Continue fieldwork →</button></dialog>
+<dialog class="modal" id="sources"><div class="eyebrow">Teacher’s method note</div><h2>Evidence, equations & limitations.</h2><p>These are fictional adult cases with a fictional mixed assemblage. Assemblage separation is a simplified visual classroom exercise. The magnifier enlarges schematic bones without displaying identification clues; these drawings are not sufficient for real-world species or age identification. No adult sex or stature equation is applied to the juvenile or animal material. Skeletons and pelvic outlines are simplified teaching diagrams, not diagnostic anatomical models. The case’s recorded pelvic traits provide the evidence for the exercise. Biological sex estimation does not establish gender identity.</p><div class="formula">Male: H = 2.38 × F + 61.41 ± 3.27 cm<br>Female: H = 2.47 × F + 54.10 ± 3.72 cm</div><p>F is maximum femur length in centimetres. H is estimated living stature. The equations requested for this activity are historically labelled “White” reference equations in the Trotter–Gleser tradition. This is a historical sample category, not a biological race determination. Ancestry is not inferred in this game, and these equations are not universal.</p><p>± is the standard error of estimate (SEE). It is not a guaranteed range, a 95% interval, or a measurement error. The report provides a central estimate and SEE separately. No age correction is applied in these fictional adult exercises.</p><ul><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9298243/" target="_blank" rel="noopener">Predicting skeletal stature using ancient DNA</a> — supplementary comparison table includes the exact male and female equations used here.</li><li><a href="https://pressbooks.gvsu.edu/introhumanosteology/chapter/stature-estimation/" target="_blank" rel="noopener">Introduction to Human Osteology: Stature Estimation</a> — includes the female equation; its male femur equation is a different published variant (2.32F + 65.53 ± 3.94). This game deliberately uses the requested 2.38F + 61.41 ± 3.27.</li><li><a href="https://pressbooks.gvsu.edu/introhumanosteology/chapter/sex-estimation-of-the-pelvis/" target="_blank" rel="noopener">Sex Estimation of the Pelvis</a> — pelvic morphology and comparative assessment.</li><li><a href="https://hrcak.srce.hr/file/348736" target="_blank" rel="noopener">Additional article supplied with the activity</a>.</li></ul><button onclick="document.getElementById('sources').close()">Close notes</button></dialog>
+<dialog class="modal" id="report"></dialog><dialog class="modal" id="records"></dialog>
+<dialog class="modal magnifier-modal" id="magnifier" aria-labelledby="magnifierTitle"><div class="eyebrow">Magnifier / visual inspection</div><h2 id="magnifierTitle">Specimen</h2><div id="magnifierView" class="magnifier-view"></div><div class="zoom-controls"><div class="zoom-control"><label for="zoomLevel">Zoom</label><input id="zoomLevel" type="range" min="1" max="3" step="0.25" value="1"><output id="zoomValue" for="zoomLevel">1.00×</output></div><div class="zoom-control"><label for="zoomHorizontal">Move left / right</label><input id="zoomHorizontal" type="range" min="-90" max="90" step="1" value="0"><output id="zoomXValue" for="zoomHorizontal">0</output></div><div class="zoom-control"><label for="zoomVertical">Move up / down</label><input id="zoomVertical" type="range" min="-90" max="90" step="1" value="0"><output id="zoomYValue" for="zoomVertical">0</output></div></div><p class="magnifier-help" style="margin-top:12px">Adjust the zoom and position to examine the specimen. Use the arrow keys when a slider is focused.</p><div class="actions"><button id="resetZoom">Reset view</button><button class="primary" id="closeZoom">Return to sorting →</button></div></dialog>
+<div class="game-toast" id="gameToast" role="status" aria-live="polite" hidden></div><div class="sparks" id="celebration" aria-hidden="true"></div><script>
+'use strict';
+const $ = id => document.getElementById(id);
+const CASES = {
+  a: {id:'Ω–17', sex:'male', femur:46, angle:'Narrower, V-shaped subpubic angle', notch:'Relatively narrow greater sciatic notch'},
+  b: {id:'Ω–18', sex:'female', femur:42, angle:'Wider, U-shaped subpubic angle', notch:'Relatively wide greater sciatic notch'}
+};
+const PARTS=[{id:'skull',name:'Skull & mandible',x:450,y:136,sx:1,sy:1,kind:'skull'}, {id:'thorax',name:'Ribs & sternum',x:450,y:247,sx:1,sy:1,kind:'thorax'}, {id:'spine',name:'Vertebral column',x:450,y:292,sx:1,sy:1,kind:'spine'}, {id:'pelvis',name:'Pelvic girdle',x:450,y:356,sx:1,sy:1,kind:'pelvis'}, {id:'rhumerus',name:'Right humerus',x:339,y:249,sx:1,sy:1,kind:'humerus',rot:10}, {id:'lhumerus',name:'Left humerus',x:561,y:249,sx:-1,sy:1,kind:'humerus',rot:-10}, {id:'rforearm',name:'Right forearm & hand',x:317,y:350,sx:1,sy:1,kind:'forearm',rot:8}, {id:'lforearm',name:'Left forearm & hand',x:583,y:350,sx:-1,sy:1,kind:'forearm',rot:-8}, {id:'rfemur',name:'Right femur',x:407,y:448,sx:1,sy:1,kind:'femur',rot:3}, {id:'lfemur',name:'Left femur',x:493,y:448,sx:-1,sy:1,kind:'femur',rot:-3}, {id:'rshin',name:'Right lower leg & foot',x:398,y:566,sx:1,sy:1,kind:'shin',rot:2}, {id:'lshin',name:'Left lower leg & foot',x:502,y:566,sx:-1,sy:1,kind:'shin',rot:-2}];
+function bone(kind){
+ if(kind==='skull')return '<path d="M-32 9C-52-35-30-57 0-57S52-35 32 9L24 24 20 42H-20L-24 24Z"/><path d="M-24 29Q0 48 24 29M-15 32V41M-7 34V43M1 35V43M9 34V43M17 32V41" fill="none"/><ellipse cx="-16" cy="-1" rx="12" ry="10" fill="#544836"/><ellipse cx="16" cy="-1" rx="12" ry="10" fill="#544836"/><path d="M0 4L-6 17H6Z" fill="#544836"/>';
+ if(kind==='thorax'){let a='<path d="M-65-36Q-35-52-4-38L0-32 4-38Q35-52 65-36" fill="none" stroke="#e3d2aa" stroke-width="8"/><path d="M-6-29L6-29 5 39H-5Z"/>';for(let i=0;i<6;i++){let y=-22+i*12;a+=`<path d="M-7 ${y}Q-80 ${y-27} -70 ${y+5}Q-55 ${y+25} -12 ${y+21}M7 ${y}Q80 ${y-27} 70 ${y+5}Q55 ${y+25} 12 ${y+21}" fill="none" stroke="#e3d2aa" stroke-width="5"/>`}return a}
+ if(kind==='spine')return Array.from({length:13},(_,i)=>`<path d="M-7 ${-84+i*10}h14l3 6-10 3-10-3Z"/>`).join('');
+ if(kind==='pelvis')return pelvis(current().sex==='female');
+ if(kind==='humerus')return '<path d="M-9-49Q-26-61-23-44L-12-33-9 36Q-25 49-12 53L-1 49Q14 56 15 43L4 34 1-33Q15-48 3-52Z"/>';
+ if(kind==='femur')return '<path d="M-7-52Q-19-65-27-56Q-36-42-20-39L-9-32-5 40Q-24 49-15 58L-3 56Q12 62 17 51L6 39 4-39Q10-56-1-56Z"/><path d="M-6-30L1 37" fill="none" opacity=".3"/>';
+ if(kind==='forearm')return '<path d="M-13-48Q-22-53-20-40L-15 24-19 36-10 39-6 28-8-39Z"/><path d="M5-49Q15-53 14-40L7 27 10 37 1 40-1 27 3-38Z"/><g stroke-width="4" fill="none"><path d="M-15 45L-17 57-11 70M-8 45L-5 60-2 76M0 45L5 58 10 72M7 44L14 54 21 64M-21 44L-27 54-25 62"/></g>';
+ return '<path d="M-9-53Q-24-59-20-44L-11 38-14 47-2 50 3 40 1-42Q12-55-1-53Z"/><path d="M14-48L19-46 12 43 7 43Z"/><path d="M-8 54L7 53 20 66 12 73-12 68Z"/><path d="M-8 75L-6 86M-1 75L2 88M6 76L10 87M13 75L18 84" stroke-width="4"/>';
+}
+function pelvis(wide){return `<path d="M-12-18Q-31-60-62-43Q-75-22-52-4L-32 5-25 28-9 22-9-10ZM12-18Q31-60 62-43Q75-22 52-4L32 5 25 28 9 22 9-10Z"/><path d="M-13-26L13-26 9 7 0 18-9 7Z"/><path d="M-26 27Q${wide?'-21 5 -4 24':'-18 12 -3 35'} 0 ${wide?'29':'39'}Q${wide?'4 24 21 5':'3 35 18 12'} 26 27" fill="none" stroke-width="7"/><ellipse cx="-32" cy="4" rx="12" ry="15" fill="#514735"/><ellipse cx="32" cy="4" rx="12" ry="15" fill="#514735"/>`}
+function art(p,transform='',extra=''){return `<g transform="${transform}" fill="#e3d2aa" stroke="#756144" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" ${extra}>${bone(p.kind)}</g>`}
+function defs(){return `<defs><filter id="earth"><feTurbulence type="fractalNoise" baseFrequency=".17" numOctaves="3" seed="12"/><feColorMatrix type="saturate" values="0"/><feBlend in="SourceGraphic" mode="multiply"/></filter><radialGradient id="light"><stop stop-color="#a18a60"/><stop offset="1" stop-color="#544534"/></radialGradient><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M100 0H0V100" fill="none" stroke="#e4c990" stroke-opacity=".12"/></pattern><filter id="shadow"><feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#16150c" flood-opacity=".65"/></filter></defs>`}
+function backdrop(){return `<rect width="900" height="690" fill="url(#light)"/><rect width="900" height="690" fill="#b7a074" filter="url(#earth)" opacity=".23"/><rect x="44" y="65" width="812" height="576" rx="30" fill="#2d261c" opacity=".25"/><rect x="50" y="70" width="800" height="560" fill="url(#grid)"/>${Array.from({length:37},(_,i)=>`<ellipse cx="${60+(i*173)%790}" cy="${80+(i*97)%535}" rx="${3+i%7}" ry="${2+i%4}" fill="#3d3628" opacity=".4"/>`).join('')}<path d="M48 71H851V631H48Z" fill="none" stroke="#ddc18d" stroke-width="2" opacity=".65"/>${[48,851].map(x=>[71,631].map(y=>`<circle cx="${x}" cy="${y}" r="5" fill="#ddc18d"/>`).join('')).join('')}<g transform="translate(790 565)" stroke="#eadbb9" fill="none" opacity=".6"><circle r="29"/><path d="M0-23L-6 13 0 6 6 13Z" fill="#eadbb9"/><text y="-36" fill="#eadbb9" stroke="none" font-size="12" text-anchor="middle">N</text></g><g transform="translate(76 600)" fill="#eee1c4" font-size="10" font-family="monospace"><path d="M0 10H100M0 5V15M50 5V15M100 5V15" stroke="#eee1c4"/><text y="0">SCHEMATIC</text><text y="30">NOT TO SCALE</text></g>`}
+// Only the adult assemblage is used for stature and pelvic sex estimation.
+const EXTRAS = [
+  {id:'juvenile_femur',kind:'juvenile',name:'Juvenile femur and epiphysis',category:'juvenile'},
+  {id:'cat_skull',kind:'catSkull',name:'Cat cranium and mandible',category:'cat'},
+  {id:'juvenile_humerus',kind:'juvenileArm',name:'Juvenile humerus and epiphysis',category:'juvenile'},
+  {id:'cat_femur',kind:'catFemur',name:'Cat femur',category:'cat'}
+];
+const OBJECTS = [
+  {id:'pottery',kind:'pottery',name:'Pottery shard',category:'context',keywords:['pottery','potsherd','sherd','ceramic']},
+  {id:'pebble',kind:'pebble',name:'Stone pebble',category:'context',keywords:['pebble','stone']},
+  {id:'root',kind:'root',name:'Plant root',category:'context',keywords:['root','roots']},
+  {id:'bottlecap',kind:'bottlecap',name:'Bottle cap',category:'context',keywords:['bottle cap','bottle-cap','cap']}
+];
+const FINDS = [...PARTS.map(p=>({...p,category:'adult'})), ...EXTRAS, ...OBJECTS];
+const CELL_MAP = [1,3,5,7,8,10,12,15,17,19,21,23,0,9,14,20,2,4,6,11];
+const CATEGORIES = {adult:'Adult human · main burial',juvenile:'Juvenile human · separate tray',cat:'Cat · animal tray',context:'Non-skeletal · context tray'};
+const FRAGILE = new Set(['skull','pelvis','rfemur','juvenile_femur']);
+const state = {};
+const escapeHTML = v => String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => n.toFixed(2);
+const current = () => CASES[state.case];
+const findById = id => FINDS.find(p=>p.id===id);
+function shuffledFindOrder(){
+  const order=FINDS.map((_,index)=>index);
+  for(let i=order.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [order[i],order[j]]=[order[j],order[i]];
+  }
+  return order;
+}
+function initial(k='a') {
+  return {case:k,phase:0,depth:Array(24).fill(0),found:[],placed:[],selected:null,sortSelected:null,
+    sortOrder:shuffledFindOrder(),classified:{},examined:[],damaged:[],repaired:[],repairOffset:20,tool:'trowel',damageEnabled:true,
+    recoveryTools:{},sex:null,sexOK:false,measured:false,calculated:false,measureCursor:0,
+    answerInput:'',conclusion:'',scenario:'',finished:false,log:[],inspectionId:null,inspectionZoom:1,inspectionX:0,inspectionY:0,attempts:{},firstTry:[],streak:0,bestStreak:0,scenarioResult:null,storyCelebrated:false};
+}
+function score() {
+  return state.found.length*10 + Object.keys(state.classified).length*5 + state.placed.length*15 +
+    (state.sexOK?40:0) + (state.measured?30:0) + (state.calculated?50:0) + (state.finished?35:0) + state.firstTry.length*2 + (state.found.length===FINDS.length&&!state.damaged.length?20:0) + (state.scenarioResult?.passed?50:0);
+}
+function feedback(text){ $('feedback').textContent=text; }
+function addLog(text){state.log.push(text);}
+function coord(i){return String.fromCharCode(65+Math.floor(i/6))+(i%6+1);}
+function broken(id){return state.damaged.includes(id)&&!state.repaired.includes(id);}
+function buttonNext(label,ready){return `<div class="actions"><button class="primary" id="next" ${ready?'':'disabled'}>${label}</button></div>`;}
+function numeric(v){let t=String(v).trim().replace(',','.');return /^\d+(\.\d+)?$/.test(t)?Number(t):NaN;}
+function height(){return current().sex==='female'?2.47*current().femur+54.10:2.38*current().femur+61.41;}
+function error(){return current().sex==='female'?3.72:3.27;}
+
+function extraArt(kind) {
+  if(kind==='pottery')return '<path d="M-43-28L-9-43 36-24 25 18-12 36-36 12Z" fill="#b97647" stroke="#75472c"/><path d="M-30-15Q-4-30 24-13M-26-3Q-1-17 20 0M-13 18L14 8" fill="none" stroke="#e8bf8c" stroke-width="4"/>';
+  if(kind==='pebble')return '<path d="M-45 5Q-51-24-17-33Q19-49 42-17Q61 9 26 29Q-9 48-36 25Z" fill="#969084" stroke="#585b59"/><path d="M-29-9Q-5-25 20-12M-14 17L15 3" fill="none" stroke="#c3beb2" stroke-width="5"/>';
+  if(kind==='root')return '<g fill="none" stroke="#9c713d" stroke-width="7"><path d="M-8-54L0-19-12 11 2 53M-2-19L29-35M-9 4L-35-9M-6 29L26 12M3 50L-17 64"/><path d="M29-35L32-54M-35-9L-48 2M26 12L42 20" stroke-width="3"/></g>';
+  if(kind==='bottlecap')return '<path d="M0-39L9-33 20-35 25-25 35-20 33-9 39 0 33 9 35 20 25 25 20 35 9 33 0 39-9 33-20 35-25 25-35 20-33 9-39 0-33-9-35-20-25-25-20-35-9-33Z" fill="#598c91" stroke="#344c58"/><circle r="28" fill="#41717e" stroke="#a7c5be"/><path d="M-14 2L0-14 14 2 0 16Z" fill="#d5d6b1"/>';
+
+  if(kind==='catSkull') return '<path d="M-27 6Q-47-33-21-43Q0-53 24-39Q43-26 25 5L15 18-16 18Z"/><ellipse cx="-20" cy="-9" rx="12" ry="13" fill="#514735"/><ellipse cx="20" cy="-9" rx="12" ry="13" fill="#514735"/><path d="M-8 0L0-7 8 0 4 8H-4Z" fill="#514735"/><path d="M-22 13L-17 31-12 14M22 13L17 31 12 14M-23 33Q0 48 23 33" fill="none" stroke-width="4"/>';
+  if(kind==='catFemur') return `<g transform="scale(.55 .8)">${bone('femur')}</g>`;
+  if(kind==='juvenile'||kind==='juvenileArm')return `<g transform="scale(.73)"><g transform="translate(0 7)">${bone(kind==='juvenile'?'femur':'humerus')}</g><ellipse cy="-62" cx="-5" rx="17" ry="7"/><path d="M-24-48H13" stroke="#72d9d2" stroke-dasharray="3 3" stroke-width="2"/></g>`;
+  return bone(kind);
+}
+function specimenArt(find,transform='',idSuffix=''){
+  const adult=find.category==='adult';
+  return `<g transform="${transform}" fill="#e3d2aa" stroke="#756144" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">${adult?bone(find.kind):extraArt(find.kind)}${broken(find.id)?'<path d="M-30-7L-8-3 4 8 15-6 30 1" stroke="#ef947b" stroke-width="3" fill="none"/>':''}</g>`;
+}
+function renderScene(){
+  let html=defs()+backdrop();
+  if(state.phase===0){
+    for(let i=0;i<24;i++){
+      const x=68+(i%6)*128,y=95+Math.floor(i/6)*124,idx=CELL_MAP.indexOf(i),d=state.depth[i],find=FINDS[idx];
+      const label=`Square ${coord(i)}, ${d===0?'covered':d===3?'excavated':find?'find visible, use brush':'loose sediment'}`;
+      html+=`<g class="digcell" transform="translate(${x} ${y})" role="button" tabindex="0" aria-label="${label}" data-cell="${i}"><rect width="120" height="116" rx="3" fill="#372f22" opacity=".3"/>`;
+      if(find&&d>0)html+=specimenArt(find,`translate(60 58) rotate(${(idx*41)%140-70}) scale(${find.kind==='thorax'?.53:.68})`);
+      if(d===0)html+='<rect width="120" height="116" rx="3" fill="#7c6949" stroke="#d9bc8155"/><path d="M10 93L90 14M20 109L110 26M6 57L58 8" stroke="#c4a878" opacity=".12"/>';
+      else if(d<3)html+=`<rect width="120" height="116" rx="3" fill="#8b7550" opacity="${d===1?.67:.29}" stroke="#d9bc8155"/>`;
+      html+=`<rect width="120" height="116" rx="3" fill="none" stroke="${d===3?'#b8c5a1':'#d9bc81'}" opacity=".5"/><text x="8" y="17" fill="#ead6ab" font-size="10" font-family="monospace">${coord(i)}</text>`;
+      if(d>0&&d<3&&find)html+='<text x="60" y="104" fill="#fff0c7" font-size="9" text-anchor="middle">EXPOSED · BRUSH</text>';
+      if(d===3&&find)html+=`<text x="60" y="104" fill="${broken(find.id)?'#ffc7b1':'#d3e5c1'}" font-size="9" text-anchor="middle">${broken(find.id)?'RECOVERED · FRACTURE':'RECORDED'}</text>`;
+      if(d===3&&!find)html+='<text x="60" y="64" fill="#b5a080" font-size="11" text-anchor="middle">SEDIMENT</text>';
+      html+='</g>';
+    }
+  } else if(state.phase===1){
+    html+='<rect x="63" y="90" width="774" height="510" rx="10" fill="#162128" opacity=".87"/>';
+    state.sortOrder.forEach((i,position)=>{
+      const f=FINDS[i];
+      let x=79+(position%4)*190,y=95+Math.floor(position/4)*100,c=state.classified[f.id],selected=state.sortSelected===f.id;
+      html+=`<g transform="translate(${x} ${y})" data-find="${f.id}" role="button" tabindex="0" aria-label="Find F${String(i+1).padStart(2,'0')}${c?', classified as '+CATEGORIES[c]:', awaiting classification'}"><rect width="176" height="92" rx="6" fill="${selected?'#3a4750':'#26343a'}" stroke="${selected?'#e7b56b':c?'#93dcae':'#557087'}" stroke-width="${selected?3:1}"/>${specimenArt(f,`translate(88 45) scale(${f.kind==='thorax'?.43:.46})`)}<text x="10" y="18" fill="#e7b56b" font-size="10" font-family="monospace">F${String(i+1).padStart(2,'0')}</text><text x="88" y="84" fill="${c?'#93dcae':'#bacbd5'}" font-size="10" text-anchor="middle">${c?c==='adult'?'ADULT TRAY':c==='cat'?'CAT TRAY':c==='context'?'CONTEXT TRAY':'JUVENILE TRAY':'INSPECT & SORT'}</text></g>`;
+    });
+  }else{
+    html+='<ellipse cx="450" cy="350" rx="173" ry="275" fill="#302a20" opacity=".18"/><g transform="translate(450 350) scale(.9) translate(-450 -350)">';
+    for(const p of PARTS){
+      const placed=state.placed.includes(p.id),enabled=state.phase===2&&!placed;
+      html+=art(p,`translate(${p.x} ${p.y}) rotate(${p.rot||0}) scale(${p.sx} ${p.sy})`,`class="slot ${placed?'placed':'ghost'}" data-slot="${p.id}" ${enabled?'role="button" tabindex="0"':''} aria-label="${p.name}${placed?', assembled':', empty outline'}" ${placed?'filter="url(#shadow)"':''}`);
+    }
+    html+='</g><text x="125" y="275" fill="#e3d2aa88" font-size="10" font-family="monospace">INDIVIDUAL’S RIGHT</text><text x="625" y="275" fill="#e3d2aa88" font-size="10" font-family="monospace">INDIVIDUAL’S LEFT</text>';
+    html+=`<g transform="translate(90 104)"><rect width="190" height="125" rx="4" fill="#122335e8" stroke="#e8b96055"/><text x="15" y="25" fill="#e8b960" font-size="10" font-family="monospace">BURIAL RECORD / ${current().id}</text><text x="15" y="49" fill="#eee5cf" font-size="12">Adult · ${state.placed.length}/12 groups</text><text x="15" y="72" fill="#bacbd5" font-size="11">${state.sexOK?'Likely '+state.sex:'Pelvic assessment pending'}</text><text x="15" y="94" fill="#bacbd5" font-size="11">${state.calculated?'Stature: '+fmt(height())+' cm':'Schematic reconstruction'}</text><text x="15" y="114" fill="#72d9d2" font-size="10">Other finds kept separately</text></g>`;
+  }
+  $('scene').innerHTML=html;
+  $('fieldLabel').textContent='TRENCH 04 / BURIAL '+state.case.toUpperCase();
+  $('fieldMode').textContent=['EXCAVATION VIEW','MIXED-ASSEMBLAGE TRAYS','RECONSTRUCTION VIEW','OSTEOLOGY VIEW','COMPLETED BURIAL'][state.phase];
+  $('fieldInstruction').textContent=['Expose with trowel; recover visible bone with brush.','Inspect a specimen, then select its evidence-based tray.','Select an adult bone, then its matching translucent outline.','Compare the adult pelvic evidence in the notebook.','The adult skeleton remains visible in its excavation context.'][state.phase];
+  $('fieldCount').textContent=state.phase===0?state.found.length+' / '+FINDS.length+' finds':state.phase===1?Object.keys(state.classified).length+' / '+FINDS.length+' sorted':state.placed.length+' / 12 assembled';
+}
+const toolIcons={
+  trowel:'<path d="M8 19L19 8 24 23Z" fill="#b9c8cb" stroke="#dde5e5"/><path d="M15 13L7 5" stroke="#cf9960" stroke-width="6"/>',
+  brush:'<path d="M18 6L11 19" stroke="#cf9960" stroke-width="6"/><path d="M7 17L17 22 12 29 2 24Z" fill="#e5cc95"/><path d="M5 22L13 26" stroke="#77613d"/>',
+  magnifier:'<circle cx="12" cy="12" r="8" fill="#72d9d233" stroke="#b9d9d5" stroke-width="3"/><path d="M18 18L27 27" stroke="#cf9960" stroke-width="5"/>'
+};
+function renderTools(){
+  const enabled=state.phase<=1;
+  $('tools').innerHTML=`<div class="tool-heading"><div class="eyebrow">Field equipment</div><span class="tag">${state.phase===0?'Select before digging':state.phase===1?'Laboratory inspection':'Fieldwork recorded'}</span></div><div class="toolrow">${Object.keys(toolIcons).map(t=>`<button class="tool ${state.tool===t&&enabled?'active':''}" data-tool="${t}" aria-pressed="${state.tool===t&&enabled}" ${!enabled||state.phase===1&&t!=='magnifier'?'disabled':''}><svg viewBox="0 0 32 32" aria-hidden="true">${toolIcons[t]}</svg>${t==='trowel'?'Trowel':t==='brush'?'Soft brush':'Magnifier'}</button>`).join('')}</div><div class="tool-caption">${state.phase===0?({trowel:'Use for the upper sediment. Switch to the brush when a bone outline appears.',brush:'Gentle surface recovery: two brush strokes after exposure. Three strokes from a covered square.',magnifier:'Inspect a square or an exposed find. Inspection does not remove sediment.'})[state.tool]:state.phase===1?'Select a specimen, then use the magnifier to open its zoom view.':'Excavation equipment is stored. Continue with the adult skeleton.'}</div><label class="risk-toggle"><input type="checkbox" id="damageToggle" ${state.damageEnabled?'checked':''} ${state.phase!==0?'disabled':''}>Simulated fracture risk when trowelling exposed fragile finds</label>`;
+}
+function renderJournal(){
+  let sorted=Object.values(state.classified),counts=['adult','juvenile','cat','context'].map(c=>sorted.filter(x=>x===c).length);
+  $('journal').innerHTML=`<div>Burial ${state.case.toUpperCase()} · ${current().id} · Fictional teaching context</div><div>${state.found.length}/${FINDS.length} finds · ${counts[0]}/12 adult · ${counts[1]}/2 juvenile · ${counts[2]}/2 cat · ${counts[3]}/4 objects sorted</div><div>${state.damaged.length} simulated fracture(s) · ${state.repaired.length} adult refit(s)</div>`+state.log.slice(-3).reverse().map(l=>`<div class="recordline">${escapeHTML(l)}</div>`).join('');
+}
+function render(){
+  renderScene();renderTools();renderJournal();renderHUD();
+  $('steps').innerHTML=['Excavate','Sort finds','Assemble','Pelvic evidence','Stature & report'].map((n,i)=>`<div class="step ${i===state.phase?'active':i<state.phase?'done':''}" ${i===state.phase?'aria-current="step"':''}><i>${i<state.phase?'✓':i+1}</i>${n}</div>`).join('');
+  let content='';
+  if(state.phase===0){
+    content=`<div class="eyebrow">01 / Excavation</div><h2>Reveal a mixed burial.</h2><p>Twenty finds. One adult skeleton. Separate mixed bones and non-skeletal objects to solve the mission.</p><div class="row stat"><span>Recovered finds</span><b>${state.found.length} / ${FINDS.length}</b></div><div class="progress"><div style="width:${state.found.length/FINDS.length*100}%"></div></div><div class="note"><b>Read the sediment.</b><br>The trowel exposes a square. Use the brush to lift a visible bone safely. The magnifier lets you inspect before acting.</div><p>Some exposed finds are fragile. If damaged, an adult group must be refitted before assembly. All fragments remain recorded.</p><h3>Excavation context</h3><p>A fictional disturbed burial with mixed bones and unrelated objects. Record everything; proximity alone does not establish a connection.</p>${buttonNext('Inspect & sort all finds →',state.found.length===FINDS.length)}`;
+  }
+  if(state.phase===1){
+    const f=findById(state.sortSelected),idx=f?FINDS.indexOf(f):-1,classification=f&&state.classified[f.id];
+    content=`<div class="eyebrow">02 / Assemblage separation</div><h2>Bone or distraction?</h2><p>Choose a tray for each find. Use the magnifier whenever you wish.</p><div class="row stat"><span>Finds correctly sorted</span><b>${Object.keys(state.classified).length} / ${FINDS.length}</b></div><div class="progress"><div style="width:${Object.keys(state.classified).length/FINDS.length*100}%"></div></div>`;
+    if(f){content+=`<h3>Specimen F${String(idx+1).padStart(2,'0')} · Square ${coord(CELL_MAP[idx])}</h3><div class="specimen-preview"><svg viewBox="-100 -85 200 175" aria-label="Schematic recovered specimen">${specimenArt(f,'scale(.9)')}</svg></div>${broken(f.id)?'<div class="recoverylabel">Simulated fracture recorded · fragments retained.</div>':''}<button id="inspect" style="width:100%">Open magnifier · zoom view ↗</button><div class="sortchoices" role="group" aria-label="Choose a sorting tray">${Object.entries(CATEGORIES).map(([v,label])=>`<button data-category="${v}" aria-pressed="${classification===v}">${classification===v?'✓ ':''}${label}</button>`).join('')}</div>${classification?`<p style="margin-top:10px;color:var(--green)">Recorded: ${escapeHTML(f.name)}.</p><button id="nextFind" style="width:100%">${Object.keys(state.classified).length===FINDS.length?'All finds sorted ✓':'Next unsorted specimen →'}</button>`:''}`;}
+    content+=`<p style="font-size:11px;margin-top:12px">Schematic classroom specimens. Record your own visual assessment.</p>${buttonNext('Reunite the 12 adult groups →',Object.keys(state.classified).length===FINDS.length)}`;
+  }
+
+  if(state.phase===2){
+    const order=[9,0,6,3,10,4,1,8,7,2,11,5];
+    content=`<div class="eyebrow">03 / Adult reconstruction</div><h2>Bring the bones together.</h2><p>Select an adult group, then its matching outline, or drag it into place. The individual’s right appears on your left.</p><div class="row stat"><span>Correctly assembled</span><b>${state.placed.length} / 12</b></div><div class="inventory">${order.map(i=>{
+      const p=PARTS[i],done=state.placed.includes(p.id),dam=broken(p.id);
+      return `<button class="bonecard ${state.selected===p.id?'selected':''} ${done?'placed':''} ${dam?'damaged':''}" data-bone="${p.id}" draggable="${!done&&!dam}" ${done?'disabled':''} aria-pressed="${state.selected===p.id}"><svg viewBox="-80 -85 160 175" aria-hidden="true">${specimenArt(p,'scale(.85)')}</svg>${done?'✓ ':dam?'⚠ ':''}${p.name}</button>`;
+    }).join('')}</div><p style="font-size:11px">Separate trays: 2 juvenile human finds · 2 cat finds · 4 non-skeletal objects. Only the adult material enters this reconstruction.</p>`;
+    if(state.selected&&broken(state.selected))content+=repairPanel(state.selected);
+    content+=`<div class="actions"><button id="hint">Anatomy hint</button></div>${buttonNext('Examine adult pelvic evidence →',state.placed.length===12)}`;
+  }
+  if(state.phase===3){
+    content=`<div class="eyebrow">04 / Biological sex assessment</div><h2>Read the pelvic evidence.</h2><p>Compare the adult pelvis with these schematic patterns. Use both recorded observations before deciding.</p><div class="evidence">${[false,true].map(w=>`<div><svg viewBox="-85 -65 170 120" aria-label="${w?'Wider U-shaped':'Narrower V-shaped'} pelvic pattern"><g fill="#decda7" stroke="#756144" stroke-width="2">${pelvis(w)}</g></svg><b>${w?'WIDER / U-SHAPED':'NARROWER / V-SHAPED'}</b><br>${w?'Often female-associated':'Often male-associated'}</div>`).join('')}</div><div class="note"><b>Adult pelvis · ${current().id}</b><br>• ${current().angle}<br>• ${current().notch}</div><p>Which estimate is best supported?</p>${['male','female','indeterminate'].map(v=>`<button class="choice ${state.sex===v?'chosen':''}" data-sex="${v}" ${state.sexOK?'disabled':''}>${v==='indeterminate'?'Indeterminate':'Likely '+v}</button>`).join('')}${state.sexOK?buttonNext('Measure the adult femur →',true):'<div class="actions"><button class="primary" id="checkSex">Record interpretation</button></div>'}<p style="font-size:11px;margin-top:12px">Traits overlap. An indeterminate assessment is appropriate when evidence is insufficient. This exercise supplies a consistent teaching pattern. No sex assessment is made for the juvenile finds.</p>`;
+  }
+  if(state.phase===4){
+    const female=current().sex==='female';
+    content=`<div class="eyebrow">05 / Measurement & interpretation</div><h2>Measure the femur.</h2><p id="rulerInstruction">Drag the blue handle to the end of the bone.</p><div id="ruler">${ruler()}</div><div class="tape-reading"><span>Tape length</span><output id="cursorValue">${state.measureCursor.toFixed(1)} cm</output></div><button id="checkMeasure" style="width:100%" ${state.measured?'disabled':''}>${state.measured?'✓ Length recorded: '+current().femur+' cm':'Record length'}</button><div class="formula">${female?'Female: 2.47 × F + 54.10':'Male: 2.38 × F + 61.41'}<br><small>SEE: ± ${female?'3.72':'3.27'} cm · F in cm</small></div><div class="field-group"><label for="answer">Estimated stature (cm)</label><input type="text" id="answer" inputmode="decimal" placeholder="Calculate to 2 decimal places" value="${escapeHTML(state.answerInput)}" ${!state.measured||state.calculated?'disabled':''}></div><button class="primary" id="checkCalc" style="width:100%" ${!state.measured||state.calculated?'disabled':''}>${state.calculated?'✓ Calculation verified':'Check calculation'}</button>`;
+    if(state.calculated)content+=`<div class="result">${fmt(height())} <span style="font-size:18px">cm</span></div><p>Standard error of estimate: ± ${fmt(error())} cm. This is not a guaranteed range.</p><div class="field-group"><label for="conclusion">Conclusion (45+ characters)</label><textarea id="conclusion" placeholder="Explain the pelvic evidence, femur measurement and uncertainty.">${escapeHTML(state.conclusion)}</textarea></div><div class="field-group"><label for="scenario">Student scenario — creative interpretation</label><textarea id="scenario" placeholder="Write your evidence-based fictional scenario in English…">${escapeHTML(state.scenario)}</textarea><details class="rubric"><summary>Mission criteria</summary><p>35+ words, 2+ sentences. Mention the adult and a skeletal feature, the cat and juvenile finds, two recovered objects, separation, and uncertainty.</p><div class="keyword-bank">${OBJECTS.filter(f=>state.classified[f.id]==='context').map(f=>`<span>${escapeHTML(f.name)}</span>`).join('')}</div></details><button id="checkScenario" style="width:100%">Check scenario challenge</button><div id="scenarioAssessment" aria-live="polite">${state.scenarioResult?scenarioResultHTML(state.scenarioResult):''}</div></div><button class="primary" id="finish" style="width:100%">${state.finished?'Reopen completed report ↗':'View report ↗'}</button>`;
+  }
+  let defaultMessage=state.phase===2?(state.selected?'Selected: '+findById(state.selected).name:'Translucent groups mark the bones still to assemble.'):state.phase===3&&state.sexOK?'Assessment recorded: likely '+state.sex+'.':state.phase===4?'':'Take your time. Observe before interpreting.';
+  $('panel').innerHTML=content+`<div id="feedback" class="feedback" role="status" aria-live="polite">${defaultMessage}</div>`;
+}
+
+function advance(){
+  const allowed=[state.found.length===FINDS.length,Object.keys(state.classified).length===FINDS.length,state.placed.length===12,state.sexOK,false];
+  if(!allowed[state.phase])return;
+  state.phase++;state.selected=null;
+  if(state.phase===1){state.sortSelected=FINDS[state.sortOrder[0]].id;state.tool='magnifier';}
+  render();
+}
+function setTool(t){
+  if(!['trowel','brush','magnifier'].includes(t)||state.phase>1||state.phase===1&&t!=='magnifier')return;
+  state.tool=t;render();
+  if(state.phase===1&&t==='magnifier')inspectFind();
+}
+function dig(i){
+  if(state.phase!==0||!Number.isInteger(i)||i<0||i>=24)return;
+  const idx=CELL_MAP.indexOf(i),find=FINDS[idx],depth=state.depth[i];
+  if(state.tool==='magnifier'){
+    feedback(depth===0?'Square '+coord(i)+': covered sediment. Expose the surface before examining a find.':find?'Square '+coord(i)+': '+(depth===3?'find already recorded.':FRAGILE.has(find.id)?'fragile bone visible. Use the soft brush.':'find visible. Recover gently with the soft brush.'):'Square '+coord(i)+': sediment only.');return;
+  }
+  if(depth===3){feedback('Square '+coord(i)+' is already recorded.');return;}
+  if(state.tool==='trowel'&&depth>0&&find&&state.damageEnabled&&FRAGILE.has(find.id)){
+    if(!state.damaged.includes(find.id))state.damaged.push(find.id);
+    addLog(coord(i)+': simulated tool fracture; all fragments retained.');
+  }
+  state.depth[i]=state.tool==='trowel'?(depth===0?1:3):Math.min(3,depth+1);
+  // Empty sediment need not be brushed repeatedly once it is exposed.
+  if(!find)state.depth[i]=3;
+  if(state.depth[i]===3&&find){
+    if(!state.found.includes(find.id)){state.found.push(find.id);state.recoveryTools[find.id]=state.tool;addLog(coord(i)+': find F'+String(idx+1).padStart(2,'0')+' recovered using '+state.tool+'.');}
+    render();feedback(broken(find.id)?'Simulated fracture! Fragments were recorded together. Adult finds must be refitted before assembly.':'Find F'+String(idx+1).padStart(2,'0')+' recovered. Coordinates and tool recorded.');toast('New discovery · F'+String(idx+1).padStart(2,'0')+' · +10 XP');
+  }else{render();feedback(!find?'Sediment cleared; no skeletal find.':state.depth[i]===1?'Find outline exposed. Switch to the brush for safe recovery.':'Surface almost clear. One more gentle brush stroke.');}
+}
+function selectFind(id){if(state.phase!==1||!state.found.includes(id))return;state.sortSelected=id;render();}
+function magnifierDrawing(){
+  const f=findById(state.inspectionId);
+  if(!f)return '';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-105 -95 210 190" role="img" aria-label="Enlarged view of the selected specimen"><defs><pattern id="inspectionGrid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#72d9d2" stroke-opacity=".08" stroke-width=".5"/></pattern></defs><rect x="-105" y="-95" width="210" height="190" fill="#0c1b29"/><rect x="-105" y="-95" width="210" height="190" fill="url(#inspectionGrid)"/>${specimenArt(f,`translate(${state.inspectionX} ${state.inspectionY}) scale(${state.inspectionZoom})`)}</svg>`;
+}
+function updateMagnifier(){
+  $('magnifierView').innerHTML=magnifierDrawing();
+  $('zoomLevel').value=state.inspectionZoom;
+  $('zoomHorizontal').value=state.inspectionX;
+  $('zoomVertical').value=state.inspectionY;
+  $('zoomValue').textContent=state.inspectionZoom.toFixed(2)+'×';
+  $('zoomXValue').textContent=String(state.inspectionX);
+  $('zoomYValue').textContent=String(state.inspectionY);
+}
+function inspectFind(){
+  if(state.phase!==1||!state.found.includes(state.sortSelected))return;
+  state.inspectionId=state.sortSelected;
+  state.inspectionZoom=1;state.inspectionX=0;state.inspectionY=0;
+  if(!state.examined.includes(state.sortSelected))state.examined.push(state.sortSelected);
+  const idx=FINDS.findIndex(f=>f.id===state.inspectionId);
+  $('magnifierTitle').textContent='Specimen F'+String(idx+1).padStart(2,'0')+' · Square '+coord(CELL_MAP[idx]);
+  updateMagnifier();
+  if(!$('magnifier').open)$('magnifier').showModal();
+}
+function classify(category){
+  const id=state.sortSelected,f=findById(id);
+  if(state.phase!==1||!f||!state.found.includes(id)||!CATEGORIES[category])return;
+  if(category!==f.category){state.attempts[id]=(state.attempts[id]||0)+1;state.streak=0;renderHUD();feedback('That selection does not match this specimen. Look closely and try again.');return;}
+  if(state.classified[id]===category){feedback('This specimen is already recorded in that tray.');return;}
+  state.classified[id]=category;if(!state.attempts[id])state.firstTry.push(id);state.streak++;state.bestStreak=Math.max(state.bestStreak,state.streak);addLog('F'+String(FINDS.indexOf(f)+1).padStart(2,'0')+': '+f.name+' → '+CATEGORIES[category]+'.');render();feedback('Correct separation. '+f.name+' recorded in the '+category+' tray.');toast('Correct tray · '+state.streak+' in a row');
+}
+function nextUnsorted(){let f=state.sortOrder.map(i=>FINDS[i]).find(f=>!state.classified[f.id]);if(f)selectFind(f.id);else feedback('All 20 finds are correctly separated. Continue to adult reconstruction.');}
+function selectBone(id){
+  if(state.phase!==2||!PARTS.some(p=>p.id===id)||state.placed.includes(id)||state.classified[id]!=='adult')return;
+  state.selected=id;state.repairOffset=20;render();
+}
+function placeBone(id){
+  if(state.phase!==2||!PARTS.some(p=>p.id===id))return;
+  if(state.placed.includes(id)){feedback('That group is already assembled.');return;}
+  if(!state.selected){feedback('Select an adult bone card, then its outline.');return;}
+  if(broken(state.selected)){feedback('This adult group has a simulated fracture. Align and refit its fragments before placement.');return;}
+  if(state.selected!==id){feedback('That joint does not match. Check the shape and anatomical side.');return;}
+  state.placed.push(id);addLog(findById(id).name+': assembled in anatomical position.');state.selected=null;render();feedback('Correct fit. '+findById(id).name+' is reunited with the adult skeleton.');toast('Bone group reunited · '+state.placed.length+'/12');
+}
+function repairDrawing(id){
+  const p=findById(id),name='refitclip';
+  return `<svg viewBox="-120 -82 240 164" aria-label="Two virtual bone fragments; align the cut surfaces"><defs><clipPath id="${name}A"><rect x="-100" y="-80" width="200" height="80"/></clipPath><clipPath id="${name}B"><rect x="-100" y="0" width="200" height="80"/></clipPath></defs><path d="M-100 0H100" stroke="#72d9d244" stroke-dasharray="3 4"/><g clip-path="url(#${name}A)">${specimenArt(p)}</g><g transform="translate(${state.repairOffset} ${Math.abs(state.repairOffset)*.3})" clip-path="url(#${name}B)">${specimenArt(p)}</g></svg>`;
+}
+function repairPanel(id){return `<div class="repairbox"><h3>Refit: ${escapeHTML(findById(id).name)}</h3><p>Align the two cut surfaces with the slider, then confirm. This is a simplified virtual refit.</p><div id="refitDrawing">${repairDrawing(id)}</div><label class="inline-label" for="refitOffset">Fragment alignment</label><input id="refitOffset" type="range" min="-40" max="40" step="1" value="${state.repairOffset}"><button id="refit" style="width:100%">Confirm fragment refit</button></div>`;}
+function repairSelected(){
+  if(state.phase!==2||!state.selected||!broken(state.selected))return;
+  if(Math.abs(state.repairOffset)>1){feedback('The fragment edges are still offset. Align them with the centre guide.');return;}
+  state.repaired.push(state.selected);addLog(findById(state.selected).name+': virtual fragments refitted.');render();feedback('Refit recorded. You can now place this adult group. Real conservation requires specialist assessment.');
+}
+function anatomyHint(){
+  if(!state.selected){feedback('Select an adult group first.');return;}
+  const p=findById(state.selected),hints={femur:'The femur joins the hip to the knee.',humerus:'The humerus is the upper arm, between shoulder and elbow.',forearm:'The radius and ulna lie between the elbow and hand.',shin:'The tibia and fibula lie below the knee, above the foot.',skull:'The skull belongs at the head of the burial.',pelvis:'The pelvic girdle connects the trunk to the femora.',thorax:'The ribs surround the chest, above the pelvis.',spine:'The vertebral column runs down the centre of the torso.'};
+  feedback(hints[p.kind]+' Right and left refer to the individual.');
+  const slot=document.querySelector(`[data-slot="${p.id}"]`);if(slot)slot.style.opacity='.65';
+}
+function checkSex(){
+  if(state.phase!==3||state.placed.length!==12||state.sexOK)return;
+  if(!state.sex){feedback('Select an interpretation first.');return;}
+  if(state.sex!==current().sex){feedback(state.sex==='indeterminate'?'Indeterminate is appropriate when evidence is insufficient. This teaching case supplies two consistent traits; compare them with the reference patterns.':'Revisit both pelvic traits and compare their pattern with the references.');return;}
+  state.sexOK=true;addLog('Adult pelvic assessment: likely '+state.sex+'.');render();feedback('Evidence recorded: likely '+state.sex+'. This is a probability-based assessment, not certainty.');
+}
+function ruler(){
+  const x0=44,unit=480/55,end=x0+current().femur*unit,cursor=x0+state.measureCursor*unit,width=state.measureCursor*unit;
+  return `<svg id="osteometer" viewBox="0 0 570 255" style="width:100%;display:block;background:#dbc89c;border-radius:7px" role="group" aria-label="Fixed femur and pull-out tape measure"><defs><clipPath id="tapeClip"><rect id="tapeClipRect" x="44" y="142" width="${width}" height="48"/></clipPath></defs><rect width="570" height="255" rx="7" fill="#dbc89c"/><text x="25" y="22" font-size="11" fill="#3b3022" font-family="monospace">FEMUR / cm</text><rect x="44" y="38" width="480" height="72" fill="#c3ac7c" stroke="#897041"/><path d="M${x0} 32V120M${end} 32V120" stroke="#4e4935" stroke-width="3"/><g transform="translate(44 48) scale(${(end-x0)/480} .8)" fill="#f4e7c7" stroke="#796341" stroke-width="2"><path d="M0 20Q0 0 19 0Q35 0 36 15L58 26 445 23Q450 6 465 8Q480 8 480 22L476 48Q458 61 448 42L55 41 27 29Q0 42 0 20Z"/><path d="M65 32L439 32" fill="none" opacity=".3"/></g><path d="M44 166H524" stroke="#897041" stroke-dasharray="3 5" opacity=".4"/><rect id="tapeRibbon" x="44" y="142" width="${width}" height="48" fill="#f6ce60" stroke="#9f792e"/><g clip-path="url(#tapeClip)">${Array.from({length:56},(_,i)=>{const x=x0+i*unit;return `<path d="M${x} 143v${i%5===0?17:9}" stroke="#3b3022"/>${i%5===0?`<text x="${x}" y="180" text-anchor="middle" font-size="11" font-family="monospace" fill="#3b3022">${i}</text>`:''}`;}).join('')}</g><rect x="5" y="133" width="39" height="64" rx="10" fill="#263b4a" stroke="#7e969e" stroke-width="2"/><text x="24" y="157" fill="#f6ce60" font-size="9" text-anchor="middle">TAPE</text><text x="24" y="179" fill="#bacbd5" font-size="9" text-anchor="middle">cm</text><text x="44" y="130" font-size="9" fill="#3b3022">0</text><g id="readingCursor" data-tape-handle="true" transform="translate(${cursor} 0)" role="slider" tabindex="${state.measured?-1:0}" aria-label="Pull tape measure" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="55" aria-valuenow="${state.measureCursor}" aria-valuetext="${state.measureCursor.toFixed(1)} centimetres" aria-disabled="${state.measured}" aria-describedby="rulerInstruction"><rect x="-38" y="104" width="76" height="124" fill="transparent"/><path d="M0 34V195" stroke="#087a9c" stroke-width="2" stroke-dasharray="4 3"/><path d="M-3 139H3V194H-3Z" fill="#bdc8c9" stroke="#45616b"/><circle class="tape-grip" cy="211" r="15" fill="#087a9c" stroke="#d6f5fa" stroke-width="2"/><path d="M-10 211H10M-10 211L-6 207M-10 211L-6 215M10 211L6 207M10 211L6 215" fill="none" stroke="#e6fbff" stroke-width="1.5"/></g></svg>`;
+}
+function moveCursor(value){
+  if(state.phase!==4||state.measured)return;
+  const n=Number(value);if(!Number.isFinite(n)||n<0||n>55)return;
+  const v=Math.round(n*10)/10,width=v*480/55;
+  state.measureCursor=v;$('cursorValue').textContent=v.toFixed(1)+' cm';
+  $('readingCursor').setAttribute('transform',`translate(${44+width} 0)`);
+  $('readingCursor').setAttribute('aria-valuenow',v);
+  $('readingCursor').setAttribute('aria-valuetext',v.toFixed(1)+' centimetres');
+  $('tapeRibbon').setAttribute('width',width);$('tapeClipRect').setAttribute('width',width);
+}
+let tapeDrag=null;
+function tapePoint(svg,event){
+  const matrix=svg.getScreenCTM();if(!matrix)return null;
+  const p=svg.createSVGPoint();p.x=event.clientX;p.y=event.clientY;
+  return p.matrixTransform(matrix.inverse());
+}
+function startTapeDrag(event){
+  const grip=event.target.closest('[data-tape-handle]');
+  if(!grip||state.phase!==4||state.measured||event.isPrimary===false||typeof event.button==='number'&&event.button!==0||tapeDrag)return;
+  const svg=$('osteometer'),p=tapePoint(svg,event);if(!p)return;
+  event.preventDefault();
+  tapeDrag={id:event.pointerId,svg,offset:p.x-(44+state.measureCursor*480/55)};
+  svg.setPointerCapture(event.pointerId);grip.focus({preventScroll:true});
+}
+function dragTape(event){
+  if(!tapeDrag||event.pointerId!==tapeDrag.id||state.phase!==4||state.measured)return;
+  const p=tapePoint(tapeDrag.svg,event);if(!p)return;
+  event.preventDefault();
+  moveCursor(Math.max(0,Math.min(55,(p.x-tapeDrag.offset-44)*55/480)));
+}
+function endTapeDrag(event){
+  if(!tapeDrag||event.pointerId!==tapeDrag.id)return;
+  if(event.type==='pointerup')dragTape(event);
+  const drag=tapeDrag;tapeDrag=null;
+  if(drag.svg.hasPointerCapture(drag.id))drag.svg.releasePointerCapture(drag.id);
+}
+function tapeKey(event){
+  if(!event.target.closest('[data-tape-handle]')||state.phase!==4||state.measured)return;
+  const step=event.shiftKey?1:.1;
+  const values={ArrowRight:state.measureCursor+step,ArrowUp:state.measureCursor+step,ArrowLeft:state.measureCursor-step,ArrowDown:state.measureCursor-step,Home:0,End:55,PageUp:state.measureCursor+5,PageDown:state.measureCursor-5};
+  if(!(event.key in values))return;
+  event.preventDefault();moveCursor(Math.max(0,Math.min(55,values[event.key])));
+}
+function checkMeasure(){
+  if(state.phase!==4||!state.sexOK||state.measured)return;
+  if(Math.abs(state.measureCursor-current().femur)>.051){feedback('Pull the tape handle to the femur’s farthest endpoint. Read the tape from its zero anchor.');return;}
+  state.measured=true;addLog('Maximum adult femur length: '+current().femur+' cm.');render();feedback('Maximum length verified: '+current().femur+' cm. Use this value as F in the adult equation.');
+}
+function checkCalc(){
+  if(state.phase!==4||!state.measured||state.calculated)return;
+  const v=numeric(state.answerInput);
+  if(!Number.isFinite(v)||Math.abs(v-height())>.011){feedback('Multiply the femur length by the coefficient and add the constant. Enter the central estimate to 2 decimal places; report ± separately.');return;}
+  state.calculated=true;addLog('Central adult stature estimate: '+fmt(height())+' cm; SEE ± '+fmt(error())+' cm.');render();feedback('Calculation verified. The standard error describes uncertainty, not a guaranteed range.');
+}
+function badges(){
+  return [
+    {label:'Careful hands',earned:state.found.length===FINDS.length&&state.damaged.length===0},
+    {label:'Sharp eye',earned:state.firstTry.length>=18},
+    {label:'Anatomy expert',earned:state.placed.length===12},
+    {label:'Evidence storyteller',earned:!!state.scenarioResult?.passed}
+  ];
+}
+function renderHUD(){
+  const progress=Math.round(state.found.length/FINDS.length*20+Object.keys(state.classified).length/FINDS.length*20+state.placed.length/12*20+(state.sexOK?20:0)+(state.calculated?10:0)+(state.scenarioResult?.passed?10:0));
+  const missions=['Recover every find','Separate bones and objects','Rebuild the adult skeleton','Assess the adult pelvis','Measure, calculate and write'];
+  $('missionHUD').innerHTML=`<div><div class="mission-head"><span>${missions[state.phase]}</span><b>${progress}%</b></div><div class="meterline" role="progressbar" aria-label="Mission completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><div style="width:${progress}%"></div></div></div><div class="hud-xp">${score()} XP<small>Best streak ${state.bestStreak}</small></div><div class="medals">${badges().map(b=>`<span class="medal ${b.earned?'earned':''}">${b.earned?'★':'☆'} ${b.label}</span>`).join('')}</div>`;
+}
+let toastTimer;
+function toast(message){
+  if(toastTimer)clearTimeout(toastTimer);
+  $('gameToast').textContent=message;$('gameToast').hidden=false;
+  toastTimer=setTimeout(()=>{$('gameToast').hidden=true;},2100);
+}
+function celebrate(){
+  $('celebration').innerHTML=Array.from({length:24},(_,i)=>`<span class="spark" style="left:${(i*37)%100}%;animation-delay:${i%5*.07}s"></span>`).join('');
+  toast('Scenario challenge passed · +50 XP');
+  setTimeout(()=>{$('celebration').innerHTML='';},2500);
+}
+function evaluateScenario(text){
+  const t=String(text).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[’']/g,"'");
+  const words=t.match(/\b[a-z]+(?:'[a-z]+)?\b/g)||[];
+  const sentences=t.split(/[.!?]+/).filter(s=>(s.match(/\b[a-z]+\b/g)||[]).length>=5).length;
+  const has=pattern=>pattern.test(t);
+  const foundObjects=OBJECTS.filter(f=>state.found.includes(f.id)&&state.classified[f.id]==='context'&&f.keywords.some(k=>new RegExp('\\b'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i').test(t)));
+  const checks=[
+    {label:'35+ words and 2+ sentences',met:words.length>=35&&sentences>=2},
+    {label:'Adult + femur, pelvis or skeleton',met:has(/\badults?\b/)&&has(/\b(femur|femora|pelvis|pelvic|skeleton|skeletal)\b/)},
+    {label:'Cat + juvenile or child remains',met:has(/\b(cats?|feline)\b/)&&has(/\b(juvenile|child|children|immature)\b/)},
+    {label:'Two distinct recorded objects',met:foundObjects.length>=2},
+    {label:'Separation of mixed finds',met:has(/\b(separate|separated|separately|separating|separation|unrelated|mixed|mixing|intrusion|intrusive|disturbed|disturbance)\b/)},
+    {label:'Uncertainty about the story',met:has(/\b(may|might|could|perhaps|possible|possibly|uncertain|uncertainty)\b|cannot (prove|establish|know)|not (certain|proven)/)}
+  ];
+  return {passed:checks.every(c=>c.met),checks,words:words.length,sentences,objects:foundObjects.map(f=>f.name),matched:checks.filter(c=>c.met).length};
+}
+function scenarioResultHTML(result){
+  return `<div class="scenario-check ${result.passed?'pass':'fail'}"><h3>${result.passed?'SUCCESS · Challenge passed':'TRY AGAIN · Revise your scenario'}</h3><div>${result.matched}/6 criteria · ${result.words} words · ${result.sentences} sentences</div><ul>${result.checks.map(c=>`<li class="${c.met?'met':''}">${c.met?'✓':'○'} ${c.label}</li>`).join('')}</ul><small>Keyword-based exercise check. A teacher reviews the interpretation.</small></div>`;
+}
+function scenarioPlainResult(result){
+  return `${result.passed?'SUCCESS':'NEEDS REVISION'} — ${result.matched}/6 criteria; ${result.words} words; ${result.sentences} sentences.\n`+result.checks.map(c=>`${c.met?'PASS':'REVISE'}: ${c.label}`).join('\n');
+}
+function checkScenario(){
+  if(state.phase!==4||!state.calculated)return;
+  state.scenario=($('scenario')?.value??state.scenario).trim();
+  state.scenarioResult=evaluateScenario(state.scenario);
+  $('scenarioAssessment').innerHTML=scenarioResultHTML(state.scenarioResult);renderHUD();
+  if(state.scenarioResult.passed&&!state.storyCelebrated){state.storyCelebrated=true;celebrate();}
+}
+
+function finish(){
+  if(state.phase!==4||!state.calculated)return;
+  state.conclusion=($('conclusion')?.value??state.conclusion).trim();state.scenario=($('scenario')?.value??state.scenario).trim();
+  if(state.conclusion.length<45){feedback('Write a scientific conclusion of at least 45 characters. Include the evidence and acknowledge uncertainty.');return;}
+  state.scenarioResult=evaluateScenario(state.scenario);state.finished=true;render();if(state.scenarioResult.passed&&!state.storyCelebrated){state.storyCelebrated=true;celebrate();}
+  $('report').innerHTML=`<div class="eyebrow">Bioarchaeology Club / field report</div><h2>Evidence from the excavation.</h2><div class="mission-outcome"><strong>${state.scenarioResult.passed?'MISSION SUCCESS':'MISSION NEEDS REVISION'}</strong><small>${score()} XP · Best sorting streak: ${state.bestStreak} · ${badges().filter(b=>b.earned).length}/4 badges</small></div><p>Burial ${state.case.toUpperCase()} · Individual ${current().id} · Fictional adult teaching case</p><div class="reportstats"><div><strong>12 / 12</strong><small>Adult bone groups assembled</small></div><div><strong>Likely ${state.sex}</strong><small>Adult pelvic morphology assessment</small></div><div><strong>${current().femur} cm</strong><small>Maximum adult femur length</small></div><div><strong>${fmt(height())} cm</strong><small>Central estimate · SEE ± ${fmt(error())} cm</small></div></div><h3>Mixed assemblage</h3><p>20 finds recovered: 12 adult groups, 2 juvenile human finds, 2 cat finds and 4 non-skeletal objects. Juvenile, animal and non-skeletal material was kept in separate trays and excluded from the adult reconstruction and estimates.</p><p>Simulated tool fractures: ${state.damaged.length}. Adult groups virtually refitted: ${state.repaired.length}. Fractured extra finds remain recorded in their separate trays. This refit mechanic is not a real conservation protocol or validation of archaeological measurements.</p><h3>Adult evidence trail</h3><p>${current().angle}; ${current().notch}.</p><div class="formula">H = ${current().sex==='female'?'2.47':'2.38'} × ${current().femur} + ${current().sex==='female'?'54.10':'61.41'} = ${fmt(height())} cm<br>Standard error of estimate: ± ${fmt(error())} cm</div><h3 style="margin-top:18px">Scientific conclusion</h3><p style="white-space:pre-wrap">${escapeHTML(state.conclusion)}</p><h3>Student scenario — creative interpretation</h3><div class="story">${state.scenario?escapeHTML(state.scenario):'No creative scenario recorded.'}</div>${scenarioResultHTML(state.scenarioResult)}<p style="font-size:11px;margin-top:10px">This story is a creative interpretation. The keyword challenge checks the exercise, not the scientific truth of the story.</p><h3>Limitations</h3><p>Biological sex estimation is probabilistic and does not determine gender identity. These adult stature equations use historically labelled “White” reference samples. No ancestry is inferred. SEE is not a guaranteed range or 95% interval. No adult stature or sex estimates were applied to the juvenile or cat finds.</p><div class="actions"><button class="primary" id="downloadReport">Save report (.txt)</button><button id="printReport">Print / save PDF</button><button onclick="document.getElementById('report').close()">Back to burial</button></div>`;
+  $('report').showModal();
+}
+function reportText(){
+  const rows=FINDS.map((f,i)=>`F${String(i+1).padStart(2,'0')} | ${coord(CELL_MAP[i])} | ${f.name} | ${CATEGORIES[state.classified[f.id]]||'Unclassified'} | ${state.damaged.includes(f.id)?state.repaired.includes(f.id)?'Virtual refit completed':'Simulated fracture retained':'Intact'} | Tool: ${state.recoveryTools[f.id]||'not recovered'}`).join('\n');
+  return `BONE FILES — VIRTUAL EXCAVATION\nBIOARCHAEOLOGY CLUB / FIELD REPORT\nBurial ${state.case.toUpperCase()} / ${current().id}\nFictional adult teaching case\n\nASSEMBLAGE\n20 finds: 12 adult groups, 2 juvenile human finds, 2 cat finds, 4 non-skeletal objects.\nAdult bone groups assembled: ${state.placed.length}/12\nJuvenile, animal and non-skeletal material excluded from adult estimates.\nSimulated tool fractures: ${state.damaged.length}; virtual adult refits: ${state.repaired.length}.\n\nADULT EVIDENCE\nPelvic observations: ${current().angle}; ${current().notch}.\nBiological sex assessment: likely ${state.sex}\nMaximum femur length: ${current().femur} cm\nEquation: H = ${current().sex==='female'?'2.47':'2.38'} × ${current().femur} + ${current().sex==='female'?'54.10':'61.41'}\nCentral stature estimate: ${fmt(height())} cm\nStandard error of estimate: ± ${fmt(error())} cm\n\nSCIENTIFIC CONCLUSION\n${state.conclusion}\n\nSTUDENT SCENARIO — CREATIVE INTERPRETATION\n${state.scenario||'No creative scenario recorded.'}\n\nSCENARIO CHALLENGE\n${scenarioPlainResult(evaluateScenario(state.scenario))}\nKeywords check the exercise, not the scientific truth of the story.\n\nFIELD INVENTORY\n${rows}\n\nLIMITATIONS\nSex estimation is probabilistic and does not establish gender identity. The adult stature equations are reference-specific (historically labelled “White” reference samples). No ancestry is inferred. SEE is not a guaranteed range or 95% interval. No age correction is applied. Bones are simplified teaching diagrams. Classification is a simplified visual classroom exercise using schematic specimens; it is not a real-world identification method. Virtual refitting is not a real conservation protocol or validation of a measurement from damaged archaeological bone.\n\nSOURCES\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC9298243/\nhttps://pressbooks.gvsu.edu/introhumanosteology/chapter/stature-estimation/\nhttps://pressbooks.gvsu.edu/introhumanosteology/chapter/sex-estimation-of-the-pelvis/\n`;
+}
+function downloadReport(){
+  if(!state.finished)return;
+  const url=URL.createObjectURL(new Blob([reportText()],{type:'text/plain;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='bone_files_burial_'+state.case+'_report.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function showRecords(){
+  const rows=FINDS.map((f,i)=>`<tr><td>F${String(i+1).padStart(2,'0')}</td><td>${coord(CELL_MAP[i])}</td><td>${state.found.includes(f.id)?state.classified[f.id]?escapeHTML(f.name):'Recovered, awaiting classification':'Not recovered'}</td><td>${state.classified[f.id]?CATEGORIES[state.classified[f.id]]:'—'}</td><td>${state.damaged.includes(f.id)?state.repaired.includes(f.id)?'Virtual refit':'Simulated fracture':state.found.includes(f.id)?'Intact':'—'}</td></tr>`).join('');
+  $('records').innerHTML=`<div class="eyebrow">Excavation journal / ${current().id}</div><h2>Field inventory.</h2><p>Coordinates, separation and condition remain linked to each find.</p><div class="tablewrap"><table><thead><tr><th>Find</th><th>Square</th><th>Identification</th><th>Tray</th><th>Condition</th></tr></thead><tbody>${rows}</tbody></table></div><div class="actions"><button onclick="document.getElementById('records').close()">Back to fieldwork</button></div>`;$('records').showModal();
+}
+function restart(k){if(!CASES[k])return;tapeDrag=null;if(toastTimer)clearTimeout(toastTimer);$('gameToast').hidden=true;Object.assign(state,initial(k));$('caseSelect').value=k;addLog('Burial '+k.toUpperCase()+': field record opened.');render();}
+
+// Delegated handlers survive notebook rerenders and support touch, mouse and keyboard.
+$('scene').addEventListener('click',e=>{
+  const cell=e.target.closest('[data-cell]'),slot=e.target.closest('[data-slot]'),find=e.target.closest('[data-find]');
+  if(cell){dig(Number(cell.dataset.cell));const next=document.querySelector(`[data-cell="${cell.dataset.cell}"]`);next?.focus({preventScroll:true});}
+  if(slot){placeBone(slot.dataset.slot);if(state.phase===2)document.querySelector(`[data-slot="${slot.dataset.slot}"]`)?.focus({preventScroll:true});}
+  if(find)selectFind(find.dataset.find);
+});
+$('scene').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const n=e.target.closest('[data-cell],[data-slot],[data-find]');if(n){e.preventDefault();n.dispatchEvent(new MouseEvent('click',{bubbles:true}));}}});
+$('panel').addEventListener('click',e=>{
+  const b=e.target.closest('[data-bone]'),c=e.target.closest('[data-category]'),sex=e.target.closest('[data-sex]'),button=e.target.closest('button');
+  if(button?.disabled)return;
+  if(b){selectBone(b.dataset.bone);return;}if(c){classify(c.dataset.category);return;}
+  if(sex&&state.phase===3&&!state.sexOK){state.sex=sex.dataset.sex;render();return;}
+  const actions={next:advance,inspect:inspectFind,nextFind:nextUnsorted,refit:repairSelected,hint:anatomyHint,checkSex,checkMeasure,checkCalc,checkScenario,finish};
+  if(button&&actions[button.id])actions[button.id]();
+});
+$('panel').addEventListener('pointerdown',startTapeDrag);
+$('panel').addEventListener('pointermove',dragTape);
+$('panel').addEventListener('pointerup',endTapeDrag);
+$('panel').addEventListener('pointercancel',endTapeDrag);
+$('panel').addEventListener('lostpointercapture',event=>{if(tapeDrag?.id===event.pointerId)tapeDrag=null;});
+$('panel').addEventListener('keydown',tapeKey);
+$('panel').addEventListener('input',e=>{
+  if(e.target.id==='answer')state.answerInput=e.target.value;
+  if(e.target.id==='conclusion')state.conclusion=e.target.value;
+  if(e.target.id==='scenario'){state.scenario=e.target.value;state.scenarioResult=null;$('scenarioAssessment').innerHTML='';renderHUD();}
+  
+  if(e.target.id==='refitOffset'){
+    const v=Number(e.target.value);if(Number.isFinite(v)&&v>=-40&&v<=40){state.repairOffset=v;$('refitDrawing').innerHTML=repairDrawing(state.selected);}
+  }
+});
+$('tools').addEventListener('click',e=>{const b=e.target.closest('[data-tool]');if(b&&!b.disabled)setTool(b.dataset.tool);});
+$('tools').addEventListener('change',e=>{if(e.target.id==='damageToggle'&&state.phase===0){state.damageEnabled=e.target.checked;feedback(state.damageEnabled?'Simulated fracture risk enabled. Use the brush on exposed fragile finds.':'Simulated fracture risk disabled. Keep practising careful tool selection.');}});
+$('panel').addEventListener('dragstart',e=>{
+  const b=e.target.closest('[data-bone]');
+  if(!b||state.phase!==2||state.placed.includes(b.dataset.bone)||broken(b.dataset.bone)){e.preventDefault();return;}
+  state.selected=b.dataset.bone;e.dataTransfer.setData('text/plain',b.dataset.bone);e.dataTransfer.effectAllowed='move';
+});
+$('scene').addEventListener('dragover',e=>{if(state.phase===2&&e.target.closest('[data-slot]'))e.preventDefault();});
+$('scene').addEventListener('drop',e=>{
+  const slot=e.target.closest('[data-slot]');if(!slot||state.phase!==2)return;e.preventDefault();
+  const id=e.dataTransfer.getData('text/plain');if(PARTS.some(p=>p.id===id)&&state.classified[id]==='adult'){state.selected=id;placeBone(slot.dataset.slot);}
+});
+$('magnifier').addEventListener('input',e=>{
+  const fields={zoomLevel:['inspectionZoom',1,3],zoomHorizontal:['inspectionX',-90,90],zoomVertical:['inspectionY',-90,90]};
+  const f=fields[e.target.id];if(!f)return;
+  const v=Number(e.target.value);if(!Number.isFinite(v)||v<f[1]||v>f[2])return;
+  state[f[0]]=v;updateMagnifier();
+});
+$('magnifier').addEventListener('click',e=>{
+  const id=e.target.closest('button')?.id;
+  if(id==='closeZoom'){$('magnifier').close();$('inspect')?.focus();}
+  if(id==='resetZoom'){state.inspectionZoom=1;state.inspectionX=0;state.inspectionY=0;updateMagnifier();}
+});
+$('report').addEventListener('click',e=>{const id=e.target.closest('button')?.id;if(id==='downloadReport')downloadReport();if(id==='printReport')window.print();});
+$('caseSelect').addEventListener('change',e=>{
+  const k=e.target.value;if(state.depth.some(Boolean)&&!confirm('Start a new burial? Your current fieldwork, conclusion and scenario will be cleared. Save the completed report first.')){$('caseSelect').value=state.case;return;}restart(k);
+});
+$('restartBtn').onclick=()=>{if(!state.depth.some(Boolean)||confirm('Restart this burial and clear the current field record?'))restart(state.case);};
+$('helpBtn').onclick=()=>$('help').showModal();$('sourcesBtn').onclick=()=>$('sources').showModal();$('journalBtn').onclick=showRecords;
+restart('a');
+
+</script></body></html>
